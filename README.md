@@ -1,6 +1,8 @@
 # binning
 A simple tutorial for the equal-width-binning algorithm implemented in Typescript
 
+This demo is part of the tutorial [published here](https://medium.com/@mose.kabungo/binning-explained-557aa3cce591)
+
 ## Running sample
 
 ```ts
