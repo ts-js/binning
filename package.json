@@ -1,0 +1,21 @@
+{
+  "name": "binning",
+  "version": "1.0.0",
+  "main": "index.js",
+  "license": "MIT",
+  "devDependencies": {
+    "@types/jest": "^29.4.0",
+    "@typescript-eslint/eslint-plugin": "^5.52.0",
+    "@typescript-eslint/parser": "^5.52.0",
+    "babel-jest": "^29.4.3",
+    "eslint": "^8.34.0",
+    "ts-jest": "^29.0.5"
+  },
+  "scripts": {
+    "test": "npx jest",
+    "build": "npx tsc"
+  },
+  "dependencies": {
+    "chart.js": "^4.2.1"
+  }
+}

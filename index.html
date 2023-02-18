@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta
+      http-equiv="X-UA-Compatible"
+      content="IE=edge" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0" />
+    <title>Binning</title>
+    <style>
+      *,
+      *::after,
+      *::before {
+        margin: 0;
+        padding: 0;
+      }
+
+      .vh-100 {
+        height: 100vh;
+      }
+
+      .vw-100 {
+        width: 100vw;
+      }
+
+      .d-flex {
+        display: flex;
+      }
+
+      .flex-column {
+        flex-direction: column;
+      }
+
+      .align-items-center {
+        align-items: center;
+      }
+
+      .justify-content-center {
+        justify-content: center;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="vw-100 vh-100">
+      <div class="d-flex flex-column align-items-center justify-content-center">
+        <canvas id="myChart"> </canvas>
+      </div>
+    </div>
+
+    <script src="node_modules/chart.js/dist/chart.umd.js"></script>
+    <script type="module">
+      import { toBins } from './dist/binning.js'
+
+      const ctx = document.getElementById('myChart')
+
+      function drawBins(trx, labels) {
+        // Convert transactions frequency to bins
+        const bins = toBins(trx, labels.length, labels)
+
+        console.log(bins)
+
+        // Chart data
+        const data = {
+          labels: bins.map((bin) => bin.xAxis.label),
+          datasets: [
+            {
+              label: 'Customer Bins',
+              data: bins.map((bin) => bin.values.length),
+              backgroundColor: [
+                'rgb(255, 99, 132)',
+                'rgb(54, 162, 235)',
+                'rgb(255, 205, 86)'
+              ],
+              hoverOffset: 4
+            }
+          ]
+        }
+
+        // Chart options
+        const options = {
+          plugins: {
+            title: {
+              text: 'Binning Example',
+              display: true
+            }
+          },
+
+          scales: {
+            y: {
+              ticks: {
+                // Include a dollar sign in the ticks
+                callback: function (value, index, ticks) {
+                  if (value === 0) return ''
+                  if (value === 1) return 'One customer'
+                  return `${value} Customers`
+                }
+              }
+            }
+          }
+        }
+
+        // Render our bins
+        const chart = new Chart(ctx, { type: 'bar', data, options })
+        chart.canvas.parentNode.style.height = '400px'
+        chart.canvas.parentNode.style.width = '640px'
+      }
+
+      // Wait until window loads...
+      window.addEventListener('load', () => {
+        const trxPerCustomer = [229, 293, 394, 39, 39, 49, 93, 100, 29, 48, 188]
+        const labels = [
+          'D-Customers',
+          'C-Customers',
+          'B-Customers',
+          'A-Customers'
+        ]
+
+        drawBins(trxPerCustomer, labels)
+      })
+    </script>
+  </body>
+</html>
