@@ -5,7 +5,7 @@ export interface Bin {
   /**
    * Bin's label.
    */
-  xAxis: {
+  item: {
     value: number
     label?: string
   }
@@ -48,7 +48,7 @@ export function toBins(data: number[], binSize: number, labels?: string[]) {
   const bins: Bins = Array(binSize)
     .fill({ values: [] })
     .map((bin, i) => ({
-      xAxis: {
+      item: {
         value: minSample + binWidth * i,
         label: labels?.[i]
       },
@@ -63,13 +63,13 @@ export function toBins(data: number[], binSize: number, labels?: string[]) {
   for (let i = 0; i < binSize; i++) {
     while (
       minIndex < sampleCount &&
-      sortedData[minIndex] < bins[i].xAxis.value
+      sortedData[minIndex] < bins[i].item.value
     ) {
       minIndex++
     }
     while (
       maxIndex >= 0 &&
-      sortedData[maxIndex] > bins[i].xAxis.value + binWidth
+      sortedData[maxIndex] > bins[i].item.value + binWidth
     ) {
       maxIndex--
     }

@@ -7,10 +7,10 @@ describe('toBin', () => {
     const bins = toBins(sample, binSize)
 
     expect(bins.length).toBe(binSize)
-    expect(bins[0].xAxis.value).toBe(1)
-    expect(bins[1].xAxis.value).toBe(3.25)
-    expect(bins[2].xAxis.value).toBe(5.5)
-    expect(bins[3].xAxis.value).toBe(7.75)
+    expect(bins[0].item.value).toBe(1)
+    expect(bins[1].item.value).toBe(3.25)
+    expect(bins[2].item.value).toBe(5.5)
+    expect(bins[3].item.value).toBe(7.75)
     expect(bins[0].values).toEqual(expect.arrayContaining([1, 2, 3]))
     expect(bins[1].values).toEqual(expect.arrayContaining([4, 5]))
     expect(bins[2].values).toEqual(expect.arrayContaining([6, 7]))
@@ -23,9 +23,9 @@ describe('toBin', () => {
     const bins = toBins(sample, binSize)
 
     expect(bins.length).toBe(binSize)
-    expect(bins[0].xAxis.value).toBe(5)
-    expect(bins[1].xAxis.value).toBe(75)
-    expect(bins[2].xAxis.value).toBe(145)
+    expect(bins[0].item.value).toBe(5)
+    expect(bins[1].item.value).toBe(75)
+    expect(bins[2].item.value).toBe(145)
     expect(bins[0].values).toEqual(
       expect.arrayContaining([5, 10, 11, 13, 15, 35, 50, 55, 72])
     )
@@ -39,10 +39,10 @@ describe('toBin', () => {
     const labels = ['a', 'b', 'c', 'd']
     const bins = toBins(sample, binSize, labels)
     expect(bins.length).toBe(binSize)
-    expect(bins[0].xAxis.label).toBe('a')
-    expect(bins[1].xAxis.label).toBe('b')
-    expect(bins[2].xAxis.label).toBe('c')
-    expect(bins[3].xAxis.label).toBe('d')
+    expect(bins[0].item.label).toBe('a')
+    expect(bins[1].item.label).toBe('b')
+    expect(bins[2].item.label).toBe('c')
+    expect(bins[3].item.label).toBe('d')
   })
 
   it('should throw an error if bin size is greater than or equal to sample length', () => {

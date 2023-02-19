@@ -14,18 +14,18 @@ console.log(bins)
 // Prints
 // [
 //    {
-//      "xAxis": { "value": 29, "label": "D-Customers" },
+//      "item": { "value": 29, "label": "D-Customers" },
 //      "values": [29, 39, 39, 48, 49, 93, 100 ]},
 //    {
-//      "xAxis": { "value": 120.25, "label": "C-Customers" },
+//      "item": { "value": 120.25, "label": "C-Customers" },
 //      "values": [ 188 ]
 //    },
 //    {
-//      "xAxis": { "value": 211.5, "label": "B-Customers" },
+//      "item": { "value": 211.5, "label": "B-Customers" },
 //      "values": [ 229, 293 ]
 //    },
 //    {
-//      "xAxis": { "value": 302.75, "label": "A-Customers" },
+//      "item": { "value": 302.75, "label": "A-Customers" },
 //      "values": [ 394 ]
 //    }
 // ]
